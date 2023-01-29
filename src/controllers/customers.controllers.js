@@ -40,7 +40,7 @@ const createCustomer = async (req, res) => {
 			payload, // DATOS QUE SE ACOMPAÑARÁN EN EL TOKEN
 			process.env.SECRET, // LLAVE PARA DESCIFRAR LA FIRMA ELECTRÓNICA DEL TOKEN,
 			{
-				expiresIn: 360000, // EXPIRACIÓN DEL TOKEN
+				expiresIn: 3600000, // EXPIRACIÓN DEL TOKEN
 			},
 			(error, token) => {
 				// CALLBACK QUE, EN CASO DE QUE EXISTA UN ERROR, DEVUELVA EL TOKEN
