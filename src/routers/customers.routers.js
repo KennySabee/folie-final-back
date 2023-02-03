@@ -5,7 +5,7 @@ const { getCustomers, createCustomer, loginCustomer,updateCustomers, verificarCu
 
 
 //localhost:5000/customers
-router.get("/", authorization, getCustomers);
+router.get("/list", authorization, getCustomers);
 // //localhost:5000/customers/crear
 router.post("/create", createCustomer);
 // //localhost:5000/customers/login

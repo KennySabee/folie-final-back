@@ -4,12 +4,12 @@ const { getShopping, createShopping, deleteShopping, updateShopping} = require (
 
 
 //localhost:5000/Shopping
-router.get("/", getShopping);
+router.get("/list", getShopping);
 // //localhost:5000/Shopping
-router.post("/", createShopping);
+router.post("/create", createShopping);
 // //localhost:5000/Shopping/{id}
-router.put("/:id", updateShopping);
+router.put("/update/:id", updateShopping);
 // //localhost:5000/Shopping/{id}
-router.delete("/:id", deleteShopping);
+router.delete("/delete/:id", deleteShopping);
 
 module.exports = router;

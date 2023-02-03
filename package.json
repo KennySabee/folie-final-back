@@ -1,7 +1,7 @@
 {
   "name": "back",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend de proyecto 5 ecommerce folie",
   "main": "src/index.js",
   "scripts": {
     "start": " nodemon index",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/KennySabee/folie-final-back.git"
   },
-  "author": "",
+  "author": "Kenny Merizalde",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KennySabee/folie-final-back/issues"

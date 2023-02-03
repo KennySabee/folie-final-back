@@ -19,7 +19,7 @@ const createCustomer = async (req, res) => {
 	try {
 		// GENERAMOS STRING ALEATORIO PARA USARSE CON EL PASSWORD
 		const salt = await bcryptjs.genSalt(10)
-		const hashedPassword = await bcryptjs.hash(password, salt)
+		const hashedPassword = await bcryptjs.hash(password, salt) //el metodo hash encripta la contraseña
 
 		// CREAMOS UN USUARIO CON SU PASSWORD ENCRIPTADO
 		const respuestaDB = await Customer.create({

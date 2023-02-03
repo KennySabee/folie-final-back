@@ -7,29 +7,31 @@ const getShopping = async (req, res) => {
     const Shop = await Shopping.find({});
     respApi(res, "Success", Shop);
   } catch {
-    console.log("Error en la consulta");
+    console.log("Error obteniendo productos en la consulta");
   }
 };
 
 const createShopping = async (req, res) => {
+  const { name, brand, price, description, img } = req.body
   try{
     msgFormatoConst("createShopping");
-    const ShoppingNew = await Shopping.create(req.body);  
+    const ShoppingNew = await Shopping.create({ name, brand, price, description, img });  
     respApi(res, "Success", ShoppingNew);
   } catch{
-    console.log("Error en la consulta");
+    console.log("Error creando producto en la consulta");
   }
   
 };
 
 //tengo problemas aqui con el put 
 const updateShopping = async (req, res) => {
+  const { id, name, brand, price, description, img } = req.body
   try{
     msgFormatoConst("updateShopping");
-    const ShoppingUpdate = await Shopping.findByIdAndUpdate(req.params.id, req.body, {new:true});  
+    const ShoppingUpdate = await Shopping.findByIdAndUpdate(id, { name, brand, price, description, img }, {new:true});  
     respApi(res, "Success", ShoppingUpdate);
   } catch{
-    console.log("Error en la consulta");
+    console.log("Error actualizando datos en consulta");
   }
  
 };
@@ -41,7 +43,7 @@ const deleteShopping = async (req, res) => {
     respApi(res, "Success", ShoppingDelete);
 
   } catch{
-    console.log("Error en la consulta");
+    console.log("Error eliminando producto en la consulta");
   }
   
 };

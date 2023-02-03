@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
+mongoose.set("strictQuery", false); //Es para evitar el error de strictQuery
 const dbConnection = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL
