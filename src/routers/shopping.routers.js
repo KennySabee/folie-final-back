@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { getShopping, createShopping, deleteShopping, updateShopping} = require ('../controllers/Shopping.controllers')
+const { getShopping, createShopping, deleteShopping, updateShopping} = require ('../controllers/shopping.controllers')
 
 
 //localhost:5000/Shopping
