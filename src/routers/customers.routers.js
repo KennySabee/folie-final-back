@@ -13,6 +13,6 @@ router.post("/login", loginCustomer);
 // //localhost:5000/customers/verify/{id}
 router.get("/verify",authorization, verificarCustomers);
 // //localhost:5000/customers/update/{id}
-router.put("/update/:id",authorization, updateCustomers);
+router.put("/update",authorization, updateCustomers);
 
 module.exports = router;
