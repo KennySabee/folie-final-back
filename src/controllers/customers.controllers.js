@@ -101,8 +101,9 @@ const verificarCustomers = async (req, res) => {
 	
 	try {
 		// CONFIRMAMOS QUE EL USUARIO EXISTA EN BASE DE DATOS Y RETORNAMOS SUS DATOS, EXCLUYENDO EL PASSWORD
-		const customer = await Customer.findById(req.customer.id).select("-password");
-		res.json({ customer });
+		const usuario = await Customer.findById(req.user.id).select("-password");
+		res.json({ usuario });
+		msgFormatConst('verifyCustomers');
 	  } catch (error) {
 		// EN CASO DE ERROR DEVOLVEMOS UN MENSAJE CON EL ERROR
 		res.status(500).json({
