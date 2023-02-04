@@ -10,7 +10,15 @@ const getShopping = async (req, res) => {
     console.log("Error obteniendo productos en la consulta");
   }
 };
-
+const getSingleProduct = async (req,res)=>{
+  try {
+      const singleProduct = await Product.findById(req.params.id)
+      msgFormatoConst('getSingleProducts');
+      res.json({singleProduct})
+  } catch (error) {
+      res.status(500).json({ msg: 'Hubo un error obteniendo los datos' })
+  }
+}
 const createShopping = async (req, res) => {
   const { name, brand, price, description, img } = req.body
   try{
@@ -50,6 +58,7 @@ const deleteShopping = async (req, res) => {
 
 module.exports = {
   getShopping,
+  getSingleProduct,
   createShopping,
   deleteShopping,
   updateShopping,
