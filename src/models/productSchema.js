@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // ID NOMBRE EMAIL PASSWORD
-const shoppingSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
   name: { type: String, require: true },
   brand: { type: String, require: true },
   price: { type: Number, require: true },
@@ -8,5 +8,5 @@ const shoppingSchema = mongoose.Schema({
   img: { type: String, require: true }
 });
 
-const Shopping = mongoose.model("shopping", shoppingSchema);
-module.exports = Shopping;
+const Product = mongoose.model("product", productSchema);
+module.exports = Product;

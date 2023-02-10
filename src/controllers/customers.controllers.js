@@ -22,7 +22,7 @@ const createCustomer = async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, salt); //el metodo hash encripta la contraseña
 
     // CREAMOS UN USUARIO CON SU PASSWORD ENCRIPTADO
-    const respuestaDB = await Customer.create({
+    const Customers = await Customer.create({
       name,
       email,
       password: hashedPassword,
@@ -61,8 +61,8 @@ const loginCustomer = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    let foundCustomer = await Customer.findOne({ email: email }); // ENCONTRAMOS UN USUARIO
-    if (!foundCustomer) {
+    let foundUser = await Customer.findOne({ email: email }); // ENCONTRAMOS UN USUARIO
+    if (!foundUser) {
       // SI NO HUBO UN USUARIO ENCONTRADO, DEVOLVEMOS UN ERROR
       return res.status(400).json({ msg: "El cliente no existe" });
     }
@@ -70,7 +70,7 @@ const loginCustomer = async (req, res) => {
     // SI TODO OK, HACEMOS LA EVALUACIÓN DE LA CONTRASEÑA ENVIADA CONTRA LA BASE DE DATOS
     const passCorrecto = await bcryptjs.compare(
       password,
-      foundCustomer.password
+      foundUser.password
     );
 
     // SI EL PASSWORD ES INCORRECTO, REGRESAMOS UN MENSAJE SOBRE ESTO
@@ -81,8 +81,8 @@ const loginCustomer = async (req, res) => {
     // SI TODO CORRECTO, GENERAMOS UN JSON WEB TOKEN
     // 1. DATOS DE ACOMPAÑAMIENTO AL JWT
     const payload = {
-      customer: {
-        id: foundCustomer.id,
+      user: {
+        id: foundUser.id,
       },
     };
 
@@ -106,7 +106,7 @@ const loginCustomer = async (req, res) => {
   }
 };
 
-const verificarCustomers = async (req, res) => {
+const verifyCustomer = async (req, res) => {
   try {
     // CONFIRMAMOS QUE EL USUARIO EXISTA EN BASE DE DATOS Y RETORNAMOS SUS DATOS, EXCLUYENDO EL PASSWORD
     const usuario = await Customer.findById(req.user.id).select("-password");
@@ -121,10 +121,10 @@ const verificarCustomers = async (req, res) => {
   }
 };
 
-const updateCustomers = async (req, res) => {
+const updateCustomer = async (req, res) => {
   const { id, nombre, email } = req.body;
   try {
-    const actualizacionCustomer = await Customer.findByIdAndUpdate(
+    const updateCustom = await Customer.findByIdAndUpdate(
       id,
       { nombre, email },
       { new: true }
@@ -141,6 +141,6 @@ module.exports = {
   getCustomers,
   createCustomer,
   loginCustomer,
-  verificarCustomers,
-  updateCustomers,
+  verifyCustomer,
+  updateCustomer,
 };
